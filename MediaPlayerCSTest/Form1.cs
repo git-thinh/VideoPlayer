@@ -22,7 +22,8 @@ namespace MediaPlayerCSTest
         {
             this.TopMost = true;
             this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;
+            this.Size = new Size(4200, 1050);
+            this.Location = new Point(0, 0);
 
             string path = Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)).FullName;
             if (Environment.OSVersion.Version.Major >= 6)
@@ -30,12 +31,21 @@ namespace MediaPlayerCSTest
                 path = Directory.GetParent(path).ToString();
             }
 
-            axWindowsMediaPlayer1.URL = path + @"\Documents\GitHub\MediaPlayer\testVideo.mp4";
+            axWindowsMediaPlayer1.URL = path + @"\Documents\GitHub\MediaPlayer\Genesis_Trailer_720p.mp4";
             axWindowsMediaPlayer1.uiMode = "none";
         }
 
         private void axWindowsMediaPlayer1_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
         {
+
+            /**** Don't add this if you want to play it on multiple screens***** /
+             * 
+            if (axWindowsMediaPlayer1.playState == WMPLib.WMPPlayState.wmppsPlaying)
+            {
+                axWindowsMediaPlayer1.fullScreen = true;
+            }
+            /********************************************************************/
+
             if (axWindowsMediaPlayer1.playState == WMPLib.WMPPlayState.wmppsStopped)
             {
                 Application.Exit();
