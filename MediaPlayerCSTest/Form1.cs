@@ -31,7 +31,7 @@ namespace MediaPlayerCSTest
                 path = Directory.GetParent(path).ToString();
             }
 
-            axWindowsMediaPlayer1.URL = path + @"\Documents\GitHub\MediaPlayer\Genesis_Trailer_720p.mp4";
+            axWindowsMediaPlayer1.URL = path + @"\Documents\GitHub\MediaPlayer\Endszene.mp4";
             axWindowsMediaPlayer1.uiMode = "none";
         }
 
